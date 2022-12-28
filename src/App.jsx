@@ -95,7 +95,7 @@ const addTask = (task)=>{
   }
 
   return (
-    <div className="App relative ">
+    <div className="App relative">
       <img src={header} alt="header img" className='object-fill h-72 w-screen'/>
       <div className='container mx-20 p-4 px-72 absolute inset-y-24 '>
 
@@ -103,24 +103,23 @@ const addTask = (task)=>{
           <h1 className='text-6xl text-very-light-gray bg-red'>T O D O</h1>
         </div>
 
-        <div className="flex justify-center">
-          {/* <input className='text-2xl shadow appearance-none border rounded w-3/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"'
-            type="text" 
-            ref={ref}
-            placeholder="Enter a task"
-            onChange={(event)=>{setNewtask(prev=>{return event.target.value})}}
-            /> */}
-
+        <div className="w-3/4 m-auto">
             <Input 
             placeholder="Enter a Task"
             addTask = {addTask}
             />
-
-
         </div>
 
         <div className='list flex justify-center my-20'>
           <ul className='w-3/4 bg-white rounded-lg p-6'>
+            <p className="text-slate-500">
+
+            {(taskList.length === 0)?
+            "Hi, you have no task for today. Have a good day!"
+            :"Hello, here are your latest tasks"
+            }
+
+              </p>
               <TaskList
               tasks = {taskList}
               deleteTask = {deleteTask}
@@ -130,12 +129,6 @@ const addTask = (task)=>{
         </div>
 
       </div>
-
-
-
-
-
-
 
     </div>
   )
