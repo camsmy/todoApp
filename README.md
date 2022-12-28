@@ -7,7 +7,7 @@ If running in local:
 
 # To Do
 - add night mode
-- instead of a button change, use enter to input a task
+- add edit button per task
 
 # Source
 This mini-projeect is part of my exploratory project while learning react js through scrimba. This part of the project is to make practical use of props and useState.
