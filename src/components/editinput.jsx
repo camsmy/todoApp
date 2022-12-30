@@ -2,11 +2,12 @@ import { useState,React } from "react";
 
 const EditInput = ({editedTask,updateTask,setEditing})=>{
 
+        // gets the current value of the edit input
         const [updatedTask,setUpdatedTask] = useState(editedTask.name)
 
+        // passes the new value of task to the global function updatetask 
         const handleFormSubmit = (e) =>{
                e.preventDefault()
-        //        console.log(updatedTask)
                updateTask({...editedTask,name:updatedTask})
                setEditing(false)
         }

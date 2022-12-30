@@ -5,9 +5,9 @@ import EditInput from "./components/editinput"
 import TaskList from './components/taskList'
 
 function App() {
-const [taskList, setTaskList] = useState([])
-const [editedTask,setEditedTask] = useState(null)
-const [editing,setEditing] = useState(false)
+const [taskList, setTaskList] = useState([]) //global tasklist
+const [editedTask,setEditedTask] = useState(null) //holds the task that is currently being edited
+const [editing,setEditing] = useState(false) //state for opening and closing the edit modal
 
 const addTask = (task)=>{
   setTaskList(prev=>[...prev,task])
@@ -25,6 +25,7 @@ const addTask = (task)=>{
     setTaskList(prev=>prev.map(task => task.id === id ? {check:!task.check,...task} : task))
   }
 
+  // updates the global taskList that a task has been edited
   const updateTask = (task)=>{
     setTaskList(prev=>prev.map(t => 
       t.id === task.id
@@ -52,6 +53,7 @@ const addTask = (task)=>{
         <div className="">
 
             {/* if editing is true then show the contents, else do nothing */}
+
             { editing && (
               <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -88,6 +90,9 @@ const addTask = (task)=>{
             )
 
             }
+
+
+
             <Input 
             placeholder="Enter a Task"
             addTask = {addTask}
