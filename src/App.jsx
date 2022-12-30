@@ -90,28 +90,31 @@ const addTask = (task)=>{
   }
 
   const checkTask = (id) =>{
-    setTaskList(prev=>prev.map(task => task.id === id ? {...task, check:!task.check} : task))
+    setTaskList(prev=>prev.map(task => task.id === id ? {check:!task.check,...task} : task))
 
   }
 
   return (
-    <div className="App relative">
-      <img src={header} alt="header img" className='object-fill h-72 w-screen'/>
-      <div className='container mx-20 p-4 px-72 absolute inset-y-24 '>
+    <div className="App">
 
-        <div className='flex justify-start mb-6'>
-          <h1 className='text-6xl text-very-light-gray bg-red'>T O D O</h1>
+      <div className='relative flex items-center justify-center'>
+      <img src={header} alt="header img" className='object-cover h-64 w-full md:h-72'/>
+
+      <div className='absolute inset-y-16 px-3 md:inset-y-16 md:w-10/12 lg:w-2/4'>
+
+        <div className='flex pb-2'>
+          <h1 className='text-2xl font-bold text-very-light-gray bg-red md:text-5xl'>T O D O</h1>
         </div>
 
-        <div className="w-3/4 m-auto">
+        <div className="">
             <Input 
             placeholder="Enter a Task"
             addTask = {addTask}
             />
         </div>
 
-        <div className='list flex justify-center my-20'>
-          <ul className='w-3/4 bg-white rounded-lg p-6'>
+        <div className='list flex justify-center my-16'>
+          <ul className=' w-full bg-white rounded-lg p-6'>
             <p className="text-slate-500">
 
             {(taskList.length === 0)?
@@ -127,6 +130,10 @@ const addTask = (task)=>{
               />
           </ul>
         </div>
+
+      </div>
+
+
 
       </div>
 
