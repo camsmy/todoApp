@@ -2,7 +2,7 @@ import { useEffect,useState } from "react";
 import TaskItem from "./taskItem";
 import DeleteButton from "./deleteButton"
 
-const TaskList = ({tasks,deleteTask,checkTask}) => {
+const TaskList = ({tasks,deleteTask,checkTask,enterEditMode}) => {
     return(
     <>
     {tasks.sort((a,b)=>{a-b}).map((task) => (
@@ -15,6 +15,7 @@ const TaskList = ({tasks,deleteTask,checkTask}) => {
                 eachTask = {task}
                 deleteTask = {deleteTask}
                 checkTask = {checkTask}
+                enterEditMode = {enterEditMode}
             />
 
             </div>
