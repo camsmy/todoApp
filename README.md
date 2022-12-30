@@ -6,9 +6,10 @@ If running in local:
 - In the terminal, run `npm run dev`
 
 # To Do
-- add night mode
 - use context hook to avoid prop drilling
 - fix the folder name and components in the file system
+- make the task reponsive
+- test text: mememememememememmemememmmememememememee
 
 
 # Source

@@ -1,13 +1,24 @@
 import { useState,useEffect } from 'react'
-import header from './assets/light/bg-desktop-light.jpg'
+import HeaderLight from './assets/light/bg-desktop-light.jpg'
+import HeaderDark from './assets/dark/bg-desktop-dark.jpg'
 import Input from "./components/input"
 import EditInput from "./components/editinput"
 import TaskList from './components/taskList'
+import Moon from './assets/icon-moon.svg'
+import Sun from './assets/icon-sun.svg'
+
 
 function App() {
 const [taskList, setTaskList] = useState([]) //global tasklist
 const [editedTask,setEditedTask] = useState(null) //holds the task that is currently being edited
 const [editing,setEditing] = useState(false) //state for opening and closing the edit modal
+const [themeToggle, setThemeToggle] = useState(true)
+
+useEffect(()=>{
+  themeToggle?
+  document.body.style.backgroundColor = "hsl(233, 11%, 84%)"
+  : document.body.style.backgroundColor = "hsl(235, 19%, 35%)"
+},[themeToggle])
 
 const addTask = (task)=>{
   setTaskList(prev=>[...prev,task])
@@ -37,17 +48,28 @@ const addTask = (task)=>{
           setEditing(true)
     }
 
-
   return (
     <div className="App">
-
       <div className='relative flex items-center justify-center'>
-      <img src={header} alt="header img" className='object-cover h-64 w-full md:h-72'/>
+
+      { themeToggle ?
+        (<img src={HeaderLight} alt="header img" className='object-cover h-64 w-full md:h-72'/>)
+        :(<img src={HeaderDark} alt="header img" className='object-cover h-64 w-full md:h-72'/>)
+      }
 
       <div className='absolute inset-y-16 px-3 md:inset-y-16 md:w-10/12 lg:w-2/4'>
 
-        <div className='flex pb-2'>
-          <h1 className='text-2xl font-bold text-very-light-gray bg-red md:text-5xl'>T O D O</h1>
+        <div className='flex pb-2 justify-between'>
+          <h1 className='text-2xl font-bold text-very-light-gray md:text-5xl '>T O D O</h1>
+          <button onClick={()=>setThemeToggle(!themeToggle)} className="px-5">
+            { themeToggle ? (
+                <img src={Sun} alt="sun svg"/>
+            ) :
+            (
+              <img src={Moon} alt="moon svg"/>
+            )
+            }
+          </button>
         </div>
 
         <div className="">

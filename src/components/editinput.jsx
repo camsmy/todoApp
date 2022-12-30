@@ -6,6 +6,7 @@ const EditInput = ({editedTask,updateTask,setEditing})=>{
         const [updatedTask,setUpdatedTask] = useState(editedTask.name)
 
         // passes the new value of task to the global function updatetask 
+        // editedtask is the object handler that handles the current task being edited, also holds the previous value of the task
         const handleFormSubmit = (e) =>{
                e.preventDefault()
                updateTask({...editedTask,name:updatedTask})
