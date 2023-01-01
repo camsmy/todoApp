@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect,createContext } from 'react'
 import HeaderLight from './assets/light/bg-desktop-light.jpg'
 import HeaderDark from './assets/dark/bg-desktop-dark.jpg'
 import Input from "./components/input"
@@ -7,8 +7,10 @@ import TaskList from './components/taskList'
 import Moon from './assets/icon-moon.svg'
 import Sun from './assets/icon-sun.svg'
 
+export let AppContext = createContext()
 
 function App() {
+
 const [taskList, setTaskList] = useState([]) //global tasklist
 const [editedTask,setEditedTask] = useState(null) //holds the task that is currently being edited
 const [editing,setEditing] = useState(false) //state for opening and closing the edit modal
@@ -50,6 +52,7 @@ const addTask = (task)=>{
 
   return (
     <div className="App">
+      <AppContext.Provider value={{addTask,taskList,deleteTask,checkTask,enterEditMode,editedTask,updateTask,setEditing}}>
       <div className='relative flex items-center justify-center'>
 
       { themeToggle ?
@@ -96,11 +99,7 @@ const addTask = (task)=>{
                 </div>
 
                 <div className="relative p-6 pt-2 flex-auto">
-                 <EditInput 
-                   editedTask={editedTask}
-                   updateTask = {updateTask}
-                   setEditing = {setEditing}
-                  />
+                 <EditInput/>
                 </div>
                 {/*footer*/}
                 
@@ -113,11 +112,8 @@ const addTask = (task)=>{
 
             }
 
-
-
             <Input 
             placeholder="Enter a Task"
-            addTask = {addTask}
             />
         </div>
 
@@ -132,22 +128,14 @@ const addTask = (task)=>{
 
               </p>
 
-              
-              <TaskList
-              tasks = {taskList}
-              deleteTask = {deleteTask}
-              checkTask = {checkTask}
-              enterEditMode={enterEditMode }
-              />
+              <TaskList/>
           </ul>
         </div>
 
       </div>
 
-
-
       </div>
-
+      </AppContext.Provider>
     </div>
   )
 }

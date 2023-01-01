@@ -1,7 +1,10 @@
-import { useState,React } from "react";
+import { useState,React,useContext } from "react";
+import { AppContext } from "../App";
 
-const EditInput = ({editedTask,updateTask,setEditing})=>{
+const EditInput = ()=>{
 
+        const {editedTask,updateTask,setEditing} = useContext(AppContext)
+        
         // gets the current value of the edit input
         const [updatedTask,setUpdatedTask] = useState(editedTask.name)
 

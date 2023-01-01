@@ -1,26 +1,27 @@
-import { useEffect,useState } from "react";
+import { useContext,createContext } from "react";
 import TaskItem from "./taskItem";
-import DeleteButton from "./deleteButton"
+import { AppContext } from "../App";
 
-const TaskList = ({tasks,deleteTask,checkTask,enterEditMode}) => {
+// export let taskListContext = createContext()
+
+const TaskList = () => {
+    const {taskList,deleteTask,checkTask,enterEditMode} = useContext(AppContext)
+
     return(
     <>
-    {tasks.sort((a,b)=>{a-b}).map((task) => (
-        <div className='flex justify-between p-4
-        border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150
-        '>
-            
-            <TaskItem
-                key={task.id}
-                eachTask = {task}
-                deleteTask = {deleteTask}
-                checkTask = {checkTask}
-                enterEditMode = {enterEditMode}
-            />
-
-            </div>
-        ))}
-        </>
+        {taskList.sort((a,b)=>{a-b}).map((task) => (
+            <li className='flex justify-between p-4
+            border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150
+            '
+            key={task.id}
+            >
+                <TaskItem
+                    key={task.id}
+                    eachTask = {task}
+                />
+                </li>
+            ))}
+    </>
     )
 }
 

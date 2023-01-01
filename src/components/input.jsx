@@ -1,13 +1,13 @@
+import { useContext } from "react";
 import { useState,React } from "react";
-import AddButton from "./button"
-
+import {AppContext} from '../App'
 const Input = (props)=>{
-
+        const {addTask} = useContext(AppContext)
         const [task,setTask] = useState("")
 
         const handleFormSubmit = (e) =>{
                 e.preventDefault()
-                props.addTask({
+                addTask({
                         name:task,
                         check:false,
                         id:Date.now()
