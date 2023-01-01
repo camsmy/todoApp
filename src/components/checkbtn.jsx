@@ -1,5 +1,5 @@
 import React from "react";
-const Checkbtn = (props) =>{
+const Checkbtn = () =>{
 
 
     return(

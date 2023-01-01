@@ -1,10 +1,11 @@
 import { useState,React,useContext } from "react";
 import { AppContext } from "../App";
+import {InputComponent} from "./inputComponent"
 
 const EditInput = ()=>{
 
         const {editedTask,updateTask,setEditing} = useContext(AppContext)
-        
+
         // gets the current value of the edit input
         const [updatedTask,setUpdatedTask] = useState(editedTask.name)
 
@@ -23,15 +24,12 @@ const EditInput = ()=>{
                         onSubmit={handleFormSubmit}
                         className="flex space-x-2"
                 >
-                    <input
-                        className='text-2xl shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"'
-                        type="text"
-                        id={editedTask.id}
-                        value={updatedTask}
-                        onInput={(e)=>setUpdatedTask(e.target.value)}
-                        placeholder="Updated task"
-                        required
-                        autoFocus
+                        
+                     <InputComponent
+                     id={editedTask.id}
+                     value={updatedTask}
+                     onInput={(e)=>setUpdatedTask(e.target.value)}
+                     placeholder="Updated task"
                      />
 
                      <button

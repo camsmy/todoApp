@@ -1,11 +1,9 @@
-import { useContext,createContext } from "react";
+import { useContext } from "react";
 import TaskItem from "./taskItem";
 import { AppContext } from "../App";
 
-// export let taskListContext = createContext()
-
 const TaskList = () => {
-    const {taskList,deleteTask,checkTask,enterEditMode} = useContext(AppContext)
+    const {taskList} = useContext(AppContext)
 
     return(
     <>
